@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const mysql = require("mysql2");
@@ -5,10 +7,11 @@ const mysql = require("mysql2");
 app.use(express.static("public"));
 
 const conexao = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "Rx87@6939",
-    database: "projeto_combustiveis"
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME || "projeto_combustiveis",
+    port: process.env.DB_PORT || 3306
 });
 
 conexao.connect((erro) => {
