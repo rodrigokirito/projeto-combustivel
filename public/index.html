@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pesquisa de Preço de Combustível</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #222;
+        }
+
+        header {
+            background-color: #1f2937;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        main {
+            width: 95%;
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        .painel {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+        }
+
+        .painel h2 {
+            margin-top: 0;
+        }
+
+        #consultar {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #consultar:hover {
+            background-color: #1d4ed8;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        nav a {
+            display: block;
+            text-decoration: none;
+            background-color: #e5e7eb;
+            color: #111827;
+            padding: 14px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #d1d5db;
+        }
+
+        #resultado,
+        #resultado-menor-maior {
+            margin-top: 25px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+
+        th {
+            background-color: #1f2937;
+            color: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #d1d5db;
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        button {
+            border: none;
+            background-color: #374151;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #111827;
+        }
+
+        select {
+            padding: 9px;
+            border: 1px solid #9ca3af;
+            border-radius: 5px;
+            margin-left: 8px;
+        }
+
+        #grafico-evolucao {
+            background-color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 25px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th,
+            td {
+                padding: 7px;
+            }
+
+            main {
+                width: 98%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Pesquisa de Preço de Combustível</h1>
+        <p>
+            Pesquisa realizada com 5 postos de combustíveis localizados em Cariacica,
+            em um raio de 5 km.
+        </p>
+    </header>
+
+    <main>
+
+        <section class="painel">
+
+            <h2>Consulta de dados</h2>
+
+            <p>
+                Consulte os preços coletados e visualize informações sobre
+                os combustíveis pesquisados.
+            </p>
+
+            <button id="consultar">Consultar preços</button>
+
+            <nav>
+                <a href="#" id="menor-maior">Menor e Maior preço</a>
+                <a href="#" id="preco-medio">Preço médio</a>
+                <a href="#" id="preco-recente">Preço mais recente</a>
+                <a href="#" id="evolucao">Evolução dos preços</a>
+            </nav>
+
+        </section>
+
+        <section id="resultado"></section>
+
+        <section id="resultado-menor-maior"></section>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Posto</th>
+                    <th>Combustível</th>
+                    <th>Preço</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+
+            <tbody id="tabela-coletas"></tbody>
+        </table>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
