@@ -247,7 +247,8 @@ app.get("/evolucao", function(req, res) {
 });
 
 
-// Iniciar servidor
-app.listen(3000, function() {
-    console.log("Servidor funcionando na porta 3000");
+const PORTA = process.env.PORT || 3000;
+
+app.listen(PORTA, function() {
+    console.log(`Servidor funcionando na porta ${PORTA}`);
 });
