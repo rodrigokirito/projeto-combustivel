@@ -17,6 +17,13 @@ const conexao = mysql.createPool({
     queueLimit: 0
 });
 
+conexao.query("SELECT 1 AS teste", function(erro, resultado) {
+    if (erro) {
+        console.error("ERRO TESTE MYSQL:", erro);
+    } else {
+        console.log("MYSQL FUNCIONANDO:", resultado);
+    }
+});
 
 // Página inicial
 app.get("/", function(req, res) {
