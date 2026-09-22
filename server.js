@@ -6,21 +6,15 @@ const mysql = require("mysql2");
 
 app.use(express.static("public"));
 
-const conexao = mysql.createConnection({
+const conexao = mysql.createPool({
     host: process.env.DB_HOST || "localhost",
     user: process.env.DB_USER || "root",
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME || "projeto_combustiveis",
-    port: process.env.DB_PORT || 3306
-});
-
-conexao.connect((erro) => {
-    if (erro) {
-        console.error("Erro ao conectar ao MySQL:", erro);
-        return;
-    }
-
-    console.log("Conectado ao MySQL com sucesso!");
+    port: process.env.DB_PORT || 3306,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
 });
 
 
